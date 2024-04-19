@@ -1,0 +1,3 @@
+LICENSE = "CLOSED"
+LIC_FILES_CHKSUM = ""
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
