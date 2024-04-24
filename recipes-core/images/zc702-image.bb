@@ -13,5 +13,5 @@ python() {
 # this works but not sure if correct, inherit above doesn't work
 require recipes-core/images/petalinux-image-minimal.bb
 
-
+IMAGE_INSTALL:append = " sw-timestamp"
 
