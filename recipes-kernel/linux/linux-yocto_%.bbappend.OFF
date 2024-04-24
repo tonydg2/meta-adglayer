@@ -1,0 +1,8 @@
+
+# This did not work. Solved in linux-xlnx directory.
+
+
+
+
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+SRC_URI += "file://defconfig"
