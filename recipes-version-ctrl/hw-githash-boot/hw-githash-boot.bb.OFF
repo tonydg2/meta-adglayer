@@ -1,0 +1,83 @@
+DESCRIPTION = "Installs hw-githash-boot and its init script"
+LICENSE = "CLOSED"
+
+SRC_URI = "file://hw-githash-boot.c \
+           file://hw-githash-boot.sh"
+
+S = "${WORKDIR}"
+
+do_compile() {
+    ${CC} ${CFLAGS} ${LDFLAGS} hw-githash-boot.c -o hw-githash-boot
+}
+
+#do_install() {
+#    install -d ${D}${bindir}
+#    install -m 0755 hw-githash-boot ${D}${bindir}
+#    
+#    install -d ${D}${sysconfdir}/init.d
+#    install -m 0755 ${WORKDIR}/hw-githash-boot.sh ${D}${sysconfdir}/init.d/hw-githash-boot
+#}
+
+do_install() {
+    install -d ${D}${bindir}
+    install -m 0755 ${S}/hw-githash-boot ${D}${bindir}/hw-githash-boot
+
+    install -d ${D}${sysconfdir}/init.d
+    install -m 0755 ${WORKDIR}/hw-githash-boot.sh ${D}${sysconfdir}/init.d/hw-githash-boot
+}
+
+
+FILES_${PN} += "${bindir}/hw-githash-boot \
+                ${sysconfdir}/init.d/hw-githash-boot"
+
+
+pkg_postinst_ontarget_${PN} () {
+    # This will always run on the target, even during rootfs construction
+    update-rc.d hw-githash-boot defaults
+    update-rc.d hw-githash-boot enable
+}
+
+#pkg_postinst_${PN} () {
+#    # Check if running on the actual target or during build
+#    if [ -n "$D" ]; then
+#        # Preparing for rootfs on target device
+#        OPT="-r $D"
+#    else
+#        # Directly on target, after installation
+#        OPT=""
+#    fi
+#
+#    # Command to enable the service script
+#    update-rc.d $OPT hw-githash-boot defaults
+#}
+
+#pkg_postinst_${PN} () {
+#    # Note: $D is the destination directory on the build host, not used on target
+#    if [ -z "$D" ]; then  # Only run on target, not during package build
+#        # Ensure the init script is enabled to start at default runlevels
+#        logger "Running post-install script for hw-githash-boot"
+#        update-rc.d hw-githash-boot defaults
+#        update-rc.d hw-githash-boot enable
+#        logger "Enabled hw-githash-boot"
+#    else
+#      echo "Post-install script running in fakeroot environment"
+#    fi
+#}
+
+#pkg_postinst_${PN} () {
+#    if [ -z "$D" ]; then
+#        echo "Running post-install script for hw-githash-boot on target" >> /var/log/hw-githash-boot.log
+#        update-rc.d hw-githash-boot defaults >> /var/log/hw-githash-boot.log 2>&1
+#        update-rc.d hw-githash-boot enable >> /var/log/hw-githash-boot.log 2>&1
+#        echo "Enabled hw-githash-boot" >> /var/log/hw-githash-boot.log
+#    else
+#        echo "Post-install script running in fakeroot environment"
+#    fi
+#}
+
+
+#pkg_postinst_${PN} () {
+#    if [ -z "$D" ]; then
+#        update-rc.d hw-githash-boot defaults
+#    fi
+#}

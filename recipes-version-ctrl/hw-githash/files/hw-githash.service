@@ -1,0 +1,9 @@
+[Unit]
+Description=HW Git Hash Service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/hw-githash
+
+[Install]
+WantedBy=multi-user.target

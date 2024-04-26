@@ -14,4 +14,10 @@ python() {
 require recipes-core/images/petalinux-image-minimal.bb
 
 IMAGE_INSTALL:append = " sw-timestamp"
+#IMAGE_INSTALL:append = " hw-githash"
+IMAGE_INSTALL:append = " hw-githash-test"
+IMAGE_INSTALL:append = " hw-githash-boot"
 
+
+#SYSTEMD_AUTO_ENABLE = "enable"
+#SYSTEMD_SERVICE_${PN} = "hw-githash.service"
