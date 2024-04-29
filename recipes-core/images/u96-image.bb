@@ -11,7 +11,10 @@ python() {
 #inherit petalinux-image-minimal
 
 # this works but not sure if correct, inherit above doesn't work
-require recipes-core/images/avnet-image-minimal.bb
+#require recipes-core/images/avnet-image-minimal.bb
+require recipes-core/images/petalinux-image-minimal.bb
 
-
+IMAGE_INSTALL:append = " testapp1 test-app2"
+IMAGE_INSTALL:append = " peekpoke"
+#IMAGE_INSTALL:append = " hw-githash-test"
 
