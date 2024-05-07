@@ -16,5 +16,8 @@ require recipes-core/images/petalinux-image-minimal.bb
 
 IMAGE_INSTALL:append = " testapp1 test-app2"
 IMAGE_INSTALL:append = " peekpoke"
-#IMAGE_INSTALL:append = " hw-githash-test"
+IMAGE_INSTALL:append = " hw-githash-test"
+
+# need to do this for systemd instead (at recipe)
+#IMAGE_INSTALL:append = " hw-githash-boot"
 

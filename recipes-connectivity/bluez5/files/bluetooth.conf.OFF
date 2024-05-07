@@ -1,0 +1,6 @@
+# Content of bluetooth.conf
+[Unit]
+Description=Disable Bluetooth service
+
+[Service]
+ExecStart=

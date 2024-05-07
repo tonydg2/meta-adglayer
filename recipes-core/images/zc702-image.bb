@@ -18,7 +18,7 @@ IMAGE_INSTALL:append = " peekpoke"
 IMAGE_INSTALL:append = " sw-timestamp"
 #IMAGE_INSTALL:append = " hw-githash"
 IMAGE_INSTALL:append = " hw-githash-test"
-IMAGE_INSTALL:append = " hw-githash-boot"
+#IMAGE_INSTALL:append = " hw-githash-boot"
 IMAGE_INSTALL:append = " testapp1 test-app2"
 
 #SYSTEMD_AUTO_ENABLE = "enable"

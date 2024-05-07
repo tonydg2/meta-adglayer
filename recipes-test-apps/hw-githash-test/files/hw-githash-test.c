@@ -2,9 +2,9 @@
 #include <stdint.h>
 #include <fcntl.h>
 #include <sys/mman.h>
-#include <unistd.h>
+#include "hw-githash-test.h"
 
-#define BASE_ADDR 0x40000000
+//#define BASE_ADDR 0x40000000
 #define MAP_SIZE 4096
 
 int main() {
@@ -28,6 +28,7 @@ int main() {
     reg3 = reg + 8/sizeof(uint32_t);
     reg4 = reg + 0xC/sizeof(uint32_t);
 
+    printf("--------------------Git Hash TEST------------------------\n");
     printf("Register at 0x%X: 0x%X\n", BASE_ADDR, *reg);
     printf("Register at 0x%X: 0x%X\n", BASE_ADDR + 4, *reg2);
     printf("Register at 0x%X: 0x%X\n", BASE_ADDR + 8, *reg3);

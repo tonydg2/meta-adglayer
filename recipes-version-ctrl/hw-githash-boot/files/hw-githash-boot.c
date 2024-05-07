@@ -3,8 +3,9 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
+#include "hw-githash-config.h"
 
-#define BASE_ADDR 0x40000000
+//#define BASE_ADDR 0x40000000
 #define MAP_SIZE 4096
 
 int main() {

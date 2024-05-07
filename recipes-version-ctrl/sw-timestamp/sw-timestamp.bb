@@ -1,3 +1,5 @@
+COMPATIBLE_MACHINE = "(myhardware-zc702-zynq|myhardware-u96v2-zynqmp)"
+
 DESCRIPTION = "Create a timestamp file in /etc"
 LICENSE = "CLOSED"
 

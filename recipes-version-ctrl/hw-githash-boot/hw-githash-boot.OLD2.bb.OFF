@@ -4,7 +4,34 @@ LICENSE = "CLOSED"
 SRC_URI = "file://hw-githash-boot.c \
            file://hw-githash-boot.sh"
 
+COMPATIBLE_MACHINE = "(myhardware-zc702-zynq|myhardware-u96v2-zynqmp)"
+
 S = "${WORKDIR}"
+
+do_configure:prepend() {
+    cfg_file=${B}/hw-githash-config.h
+    echo "Creating configuration header at ${cfg_file}"
+    
+    echo "#ifndef HW_GITHASH_CONFIG_H" > ${cfg_file}
+    echo "#define HW_GITHASH_CONFIG_H" >> ${cfg_file}
+
+    case "${MACHINE}" in
+        myhardware-zc702-zynq)
+            echo "#define BASE_ADDR 0x40000000" >> ${cfg_file}
+            ;;
+        myhardware-u96v2-zynqmp)
+            echo "#define BASE_ADDR 0xA0012000" >> ${cfg_file}
+            ;;
+        *)
+            echo "#error Unsupported MACHINE" >> ${cfg_file}
+            exit 1
+            ;;
+    esac
+
+    echo "#endif /* HW_GITHASH_CONFIG_H */" >> ${cfg_file}
+}
+
+
 
 do_compile() {
     ${CC} ${CFLAGS} ${LDFLAGS} hw-githash-boot.c -o hw-githash-boot
@@ -19,15 +46,26 @@ do_install() {
 
     # Ensure the rc5.d directory exists
     install -d ${D}${sysconfdir}/rc5.d
+    install -d ${D}${sysconfdir}/rc3.d
 
     # Create symbolic links for startup and shutdown
     #ln -sf ../init.d/hw-githash-boot ${D}${sysconfdir}/rc5.d/S01hw-githash-boot  # Early in boot
     ln -sf ../init.d/hw-githash-boot ${D}${sysconfdir}/rc5.d/S99hw-githash-boot  # Late in boot
+    ln -sf ../init.d/hw-githash-boot ${D}${sysconfdir}/rc3.d/S99hw-githash-boot  # Late in boot
 }
 
 
 FILES_${PN} += "${bindir}/hw-githash-boot \
                 ${sysconfdir}/init.d/hw-githash-boot"
+
+
+#do_clean:append() {
+#    if [ -f ${B}/hw-githash-config.h ]; then
+#        echo "Removing generated config header"
+#        rm -f ${B}/hw-githash-config.h
+#    fi
+#}
+
 
 
 #ALLOW_EMPTY:${PN} = "1"

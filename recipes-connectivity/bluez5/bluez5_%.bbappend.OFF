@@ -1,0 +1,36 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+
+do_install:append() {
+    # Mask the bluetooth service to prevent it from starting
+    ln -sfn /dev/null ${D}${systemd_unitdir}/system/bluetooth.service
+}
+
+
+
+
+
+
+#FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+#SRC_URI += "file://bluetooth.conf"
+#
+#do_install:append() {
+#    install -d ${D}${systemd_unitdir}/system/bluetooth.service.d
+#    install -m 0644 ${WORKDIR}/bluetooth.conf ${D}${systemd_unitdir}/system/bluetooth.service.d/disable.conf
+#}
+
+
+
+
+
+
+
+#FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+#
+#SRC_URI += "file://bluetooth-disable.conf"
+#
+#COMPATIBLE_MACHINE = "myhardware-u96v2-zynqmp"
+#
+#do_install:append() {
+#    install -d ${D}${systemd_unitdir}/system/bluetooth.service.d
+#    install -m 0644 ${WORKDIR}/bluetooth-disable.conf ${D}${systemd_unitdir}/system/bluetooth.service.d/disable.conf
+#}

@@ -1,0 +1,5 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/nfs-utils:"
+SRC_URI += "file://nfsserver"
+
+COMPATIBLE_MACHINE = "myhardware-u96v2-zynqmp"
+EXPECTED_MACHINE = "myhardware-u96v2-zynqmp"
