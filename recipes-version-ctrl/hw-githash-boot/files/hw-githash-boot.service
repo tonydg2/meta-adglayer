@@ -1,0 +1,11 @@
+[Unit]
+Description=Hardware Git Hash Boot Application
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hw-githash-boot
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
