@@ -1,0 +1,11 @@
+DESCRIPTION = "ADG custom image ultra96v2"
+
+COMPATIBLE_MACHINE = "u96-avnet"
+
+require recipes-core/images/avnet-image-minimal.bb
+#require recipes-core/images/petalinux-image-minimal.bb
+
+#IMAGE_INSTALL:append = " testapp1 test-app2"
+#IMAGE_INSTALL:append = " peekpoke"
+#IMAGE_INSTALL:append = " hw-githash-test"
+
