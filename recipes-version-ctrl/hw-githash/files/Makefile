@@ -1,16 +1,12 @@
-all: hw-githash
+APP = hw-githash
 
-hw-githash: hw-githash.c
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
+# Add any other object files to this list below
+APP_OBJS = hw-githash.o
 
-install:
-	install -d ${DESTDIR}${BINDIR}
-	install -m 0755 hw-githash ${DESTDIR}${BINDIR}
-	install -d ${DESTDIR}${SYSDIR}/system/
-	install -m 0644 ${WRKDIR}/hw-githash.service ${DESTDIR}${SYSDIR}/system/
+all: $(APP)
 
-uninstall:
-	${RM} ${DESTDIR}/hw-githash
+$(APP): $(APP_OBJS)
+	$(CC) $(LDFLAGS) -o $@ $(APP_OBJS) $(LDLIBS)
 
 clean:
-	${RM} hw-githash
+	-rm -f $(APP) *.elf *.gdb *.o

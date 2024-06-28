@@ -1,0 +1,34 @@
+#COMPATIBLE_MACHINE = "(myhardware-zc702-zynq|myhardware-u96v2-zynqmp|u96-avnet)"
+
+DESCRIPTION = "Create a timestamp file in /etc"
+LICENSE = "CLOSED"
+
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+SRC_URI = "file://sw-timestamp.service"
+
+inherit systemd
+
+do_install() {
+    echo "Generating sw-timestamp"
+    install -d ${D}/etc
+    echo $(date -u +%Y%m%d%H%M%S) > ${D}/etc/sw-timestamp
+
+    # Install the systemd service file
+    install -d ${D}${systemd_system_unitdir}
+    install -m 0644 ${WORKDIR}/sw-timestamp.service ${D}${systemd_system_unitdir}
+
+    install -d ${D}${systemd_system_unitdir}/multi-user.target.wants
+    ln -sf ${systemd_system_unitdir}/sw-timestamp.service ${D}${systemd_system_unitdir}/multi-user.target.wants/sw-timestamp.service
+
+}
+
+FILES_${PN} += "/etc/sw-timestamp"
+FILES_${PN} += "${systemd_system_unitdir}/sw-timestamp.service"
+FILES_${PN} += "${systemd_system_unitdir}/multi-user.target.wants/sw-timestamp.service"
+
+# Make sure to include the directories in the package
+FILES_${PN} += "${systemd_system_unitdir}"
+FILES_${PN} += "${systemd_system_unitdir}/multi-user.target.wants"
+
+# Enable the service by default
+SYSTEMD_SERVICE_${PN} = "sw-timestamp.service"

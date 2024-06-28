@@ -1,0 +1,14 @@
+[Unit]
+Description=Print Timestamp at Boot 666
+After=multi-user.target
+Before=shutdown.target
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+#ExecStart=/bin/sh -c 'echo "Current directory: $(pwd)" > /tmp/sw-timestamp-debug.log; env >> /tmp/sw-timestamp-debug.log; cat /etc/sw-timestamp >> /tmp/sw-timestamp-debug.log 2>&1'
+#ExecStart=/bin/sh -c 'cat /etc/sw-timestamp | systemd-cat -t sw-timestamp'
+ExecStart=/bin/sh -c 'cat /etc/sw-timestamp > /dev/console'
+
+[Install]
+WantedBy=multi-user.target
