@@ -29,17 +29,17 @@ int main() {
     reg2 = reg + 4/sizeof(uint32_t);  // pointer arithmetic to the second register
     reg3 = reg + 8/sizeof(uint32_t);
     reg4 = reg + 0xC/sizeof(uint32_t);
-    printf("-------------------------------------------------------------------------------\n");
-    printf("--------------------PL FW GitHash Timestamp------------------------------------\n");
-    printf("-------------------------------------------------------------------------------\n");
+    printf("----------------------------------------------------\n");
+    printf("--------------------TDG Boot------------------------\n");
+    printf("----------------------------------------------------\n");
     printf("Register at 0x%X: 0x%X\n", BASE_ADDR, *reg);
     printf("Register at 0x%X: 0x%X\n", BASE_ADDR + 4, *reg2);
     printf("Register at 0x%X: 0x%X\n", BASE_ADDR + 8, *reg3);
     printf("Register at 0x%X: 0x%X\n", BASE_ADDR + 0xC, *reg4);
-    printf("-------------------------------------------------------------------------------\n");
-    printf("-------------------------------------------------------------------------------\n");
-    fflush(stdout);
-    fflush(stderr);
+    printf("----------------------------------------------------\n");
+    printf("----------------------------------------------------\n");
+    printf("----------------------------------------------------\n");
+
     munmap((void*)reg, MAP_SIZE);
     close(fd);
     return 0;

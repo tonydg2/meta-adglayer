@@ -1,11 +1,13 @@
 [Unit]
-Description=Hardware Git Hash Boot Application
-After=network.target
+Description=FW Git Hash 666
+After=multi-user.target
+Before=shutdown.target
+DefaultDependencies=no
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/hw-githash-boot
-Restart=on-failure
+Type=oneshot
+#ExecStart=/usr/bin/hw-githash-boot
+ExecStart=/bin/sh -c '/usr/bin/hw-githash-boot > /dev/console 2>&1'
 
 [Install]
 WantedBy=multi-user.target

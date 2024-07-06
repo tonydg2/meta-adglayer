@@ -1,5 +1,5 @@
 [Unit]
-Description=Print Timestamp at Boot 666
+Description=SW Timestamp
 After=multi-user.target
 Before=shutdown.target
 DefaultDependencies=no
