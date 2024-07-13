@@ -9,6 +9,12 @@
 / {
    chosen {
       bootargs = "earlycon console=ttyPS0,115200 clk_ignore_unused root=/dev/mmcblk0p2 rw rootwait cma=512M rfkill.default_state=1";
+
+/* root is on USB stick where the entire stick is formatted single partition, so this will work as 'sda' instead of sda1... */
+/* can set this instead in the u-boot-xlnx-scr u-boot script 'boot.cmd.u96' file to override these bootargs */
+/* not working in boot.cmd.u96 file... */
+/* this works and will load rootfs from usb, but there are issues...services fail to start...*/
+/*      bootargs = "earlycon console=ttyPS0,115200 clk_ignore_unused root=/dev/sda rw rootwait cma=512M rfkill.default_state=1";*/
    };
 
    gpio-keys {

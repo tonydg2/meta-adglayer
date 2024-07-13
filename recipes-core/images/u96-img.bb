@@ -10,4 +10,28 @@ IMAGE_INSTALL:append = " \
  hw-githash\
  sw-timestamp\
  hw-githash-boot\
+ ultra96-ap-setup\
+ ultra96-misc\
+ ultra96-radio-leds\
+ ultra96-wpa\
+ usb-gadget-ethernet\
+ wilc3000-fw\
+ wilc\
+ ultra96-ap-setup\
+ ultra96-startup-pages\
+ ultra96-wlan0-config\
+ iw\
+"
+
+
+IMAGE_INSTALL:remove = " \
+ htop\
+ iperf3\
+ meson\
+ libdfx\
+ openamp-fw-echo-testd\
+ openamp-fw-mat-muld\
+ openamp-fw-rpc-demo\
+ nfs-utils\
+ nfs-utils-client\
 "
