@@ -15,9 +15,12 @@ SRC_URI:append = "\
 	file://system-bsp.dtsi \
 "
 
+## ADG - added system-user.dtsi
+
 SRC_URI:append:u96v2-sbc-base = "\
 	file://openamp.dtsi \
 	file://system-conf.dtsi \
+	file://system-user.dtsi \
 "
 
 # For Avnet BSP only
@@ -33,7 +36,9 @@ do_configure:append:u96v2-sbc-base () {
 	if [ -e ${WORKDIR}/openamp.dtsi ]; then
 		cp ${WORKDIR}/openamp.dtsi ${DT_FILES_PATH}/openamp.dtsi
 		cp ${WORKDIR}/system-conf.dtsi ${DT_FILES_PATH}/system-conf.dtsi
+		cp ${WORKDIR}/system-user.dtsi ${DT_FILES_PATH}/system-user.dtsi
 		echo '#include "openamp.dtsi"' >> ${DT_FILES_PATH}/${BASE_DTS}.dts
+		echo '#include "system-user.dtsi"' >> ${DT_FILES_PATH}/${BASE_DTS}.dts
 	fi
 }
 

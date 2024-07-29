@@ -21,7 +21,16 @@ IMAGE_INSTALL:append = " \
  ultra96-startup-pages\
  ultra96-wlan0-config\
  iw\
+ wifi-udp\
+ dma-proxy\
+ dma-proxy-test\
+ mcdma-test\
 "
+# kernel headers:
+#kernel-devsrc
+
+# gcc and make tools:
+#EXTRA_IMAGE_FEATURES:append= " tools-sdk"
 
 
 IMAGE_INSTALL:remove = " \
@@ -35,3 +44,4 @@ IMAGE_INSTALL:remove = " \
  nfs-utils\
  nfs-utils-client\
 "
+

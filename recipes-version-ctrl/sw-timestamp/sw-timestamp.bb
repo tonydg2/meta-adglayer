@@ -15,7 +15,7 @@ do_install() {
 
     # initial line uses '>', subsequent appends are '>>'
     echo "-------------------------------------------------------------------------------" > ${D}/etc/sw-timestamp
-    echo "*************** SW Image TIMESTAMP: $(date -u +%Y%m%d%H%M%S) ***********" >> ${D}/etc/sw-timestamp
+    echo "*************** SW Image TIMESTAMP: $(date +%Y-%m%d-%H%M%S) ***********" >> ${D}/etc/sw-timestamp
     echo "-------------------------------------------------------------------------------" >> ${D}/etc/sw-timestamp
 
 
