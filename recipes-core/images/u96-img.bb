@@ -25,6 +25,7 @@ IMAGE_INSTALL:append = " \
  dma-proxy\
  dma-proxy-test\
  mcdma-test\
+ mcdma-custom\
 "
 # kernel headers:
 #kernel-devsrc

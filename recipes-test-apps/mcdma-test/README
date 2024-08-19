@@ -1,0 +1,17 @@
+mcdma-test
+===========
+
+-- provide info/dependencies, verify installed:
+modinfo /lib/modules/$(uname -r)/extra/mcdma-test.ko
+
+-- load module
+insmod /lib/modules/$(uname -r)/extra/mcdma-test.ko
+
+-- verify loaded:
+lsmod
+lsmod | grep mcdma_test
+
+-- unload module
+rmmod mcdma_test
+
+

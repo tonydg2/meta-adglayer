@@ -1,0 +1,17 @@
+mcdma-custom
+===========
+
+-- provide info/dependencies, verify installed:
+modinfo /lib/modules/$(uname -r)/extra/mcdma-custom.ko
+
+-- load module
+insmod /lib/modules/$(uname -r)/extra/mcdma-custom.ko
+
+-- verify loaded:
+lsmod
+lsmod | grep mcdma_custom
+
+-- unload module
+rmmod mcdma_custom
+
+
