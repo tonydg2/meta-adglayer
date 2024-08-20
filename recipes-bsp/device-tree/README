@@ -1,0 +1,8 @@
+system-user.dtsi
+
+When adding IP instances for example 'axi_mcdma_0' which is the MCDMA IP instance that used to be in the block diagram at the top level.
+When I changed the design to add a hierarchical block called 'mcdma_bd', the new name of the instance became 'mcdma_bd_axi_mcdma_0'.
+Can look in the generated device tree located in 
+  "/mnt/SW_1TB/u96/build/tmp/work/hw_u96-xilinx-linux/device-tree/xilinx-v2023.2+gitAUTOINC+1a5881d004-r0/device-tree-build/device-tree/"
+
+  See pl.dtsi to get correct instance name.

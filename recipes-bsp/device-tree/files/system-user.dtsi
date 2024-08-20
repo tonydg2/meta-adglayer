@@ -3,11 +3,11 @@
 
 dma_proxy {
   compatible ="xlnx,dma_proxy";
-  dmas = <&axi_mcdma_0 0  &axi_mcdma_0 16 &axi_mcdma_0 1 &axi_mcdma_0 17> ;
+  dmas = <&mcdma_bd_axi_mcdma_0 0  &mcdma_bd_axi_mcdma_0 16 &mcdma_bd_axi_mcdma_0 1 &mcdma_bd_axi_mcdma_0 17> ;
   dma-names = "dma_proxy_tx_0", "dma_proxy_rx_0", "dma_proxy_tx_1", "dma_proxy_rx_1";
 } ;
 };
 
-&axi_mcdma_0 {
+&mcdma_bd_axi_mcdma_0 {
   #dma-cells = <1>;
 };
