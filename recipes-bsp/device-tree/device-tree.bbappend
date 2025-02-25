@@ -16,12 +16,17 @@ SRC_URI:append = "\
 "
 
 ## ADG - added system-user.dtsi
+# remove temporarily DMA stuff, testing dual cam mezz. renamed to .OFF
 
 SRC_URI:append:u96v2-sbc-base = "\
 	file://openamp.dtsi \
 	file://system-conf.dtsi \
 	file://system-user.dtsi \
 "
+
+#add this from avnet petalinux testing dualCam
+require ${@'device-tree-sdt.inc' if d.getVar('SYSTEM_DTFILE') != '' else ''}
+
 
 # For Avnet BSP only
 do_configure:append () {

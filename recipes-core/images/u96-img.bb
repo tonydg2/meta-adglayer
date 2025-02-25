@@ -22,11 +22,30 @@ IMAGE_INSTALL:append = " \
  ultra96-wlan0-config\
  iw\
  wifi-udp\
- dma-proxy\
- dma-proxy-test\
- mcdma-test\
- mcdma-custom\
+ ap1302\
+ device-tree\
+ camera-setup\
+ run-camera\
+ libdrm\
+ libdrm-tests\
+ vim\
+ v4l-utils\
+ packagegroup-petalinux-gstreamer\
+ util-linux-mount\
+ libpython3\
+ packagegroup-petalinux-python-modules\
+ python3\
+ python3-core\
+ python3-modules\
 "
+## remove dma stuff testing dual cam mezz
+# dma-proxy
+# dma-proxy-test
+# mcdma-test
+# mcdma-custom
+
+
+
 # kernel headers:
 #kernel-devsrc
 
